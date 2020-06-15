@@ -60,11 +60,12 @@ jobs:
       - run: gcloud info
       - name: Generate kube config file
         run: gcloud container clusters get-credentials  swapy-k8s --zone=${{ secrets.CLUSTER_ZONE }}
-      - run: cat ~/.kube/config
+      - name: export kubeconfig file to env variable
+        run: export KUBE_CONFIG=$(cat ~/.kube/config)
       - name: Deploy
         uses: WyriHaximus/github-action-helm3@v1.0.0
         with:
           exec: helm upgrade -i -f ./deployment/helm/values.yaml github-actions-test ./deployment/helm/
-#          kubeconfig: '${{ secrets.KUBECONFIG }}'
+          kubeconfig: $KUBE_CONFIG
 
 
