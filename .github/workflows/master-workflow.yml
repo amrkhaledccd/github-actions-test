@@ -58,6 +58,8 @@ jobs:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           export_default_credentials: true
       - run: gcloud info
+      - name: Generate kube config file
+        run: gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
       - name: Deploy
         uses: WyriHaximus/github-action-helm3@v1.0.0
         with:
