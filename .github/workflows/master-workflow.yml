@@ -50,11 +50,17 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+      - name: setup gcloud
+        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+      - run: gcloud info
       - name: Deploy
         uses: WyriHaximus/github-action-helm3@v1.0.0
         with:
           exec: helm upgrade -i -f ./deployment/helm/values.yaml github-actions-test ./deployment/helm/
-          kubeconfig: '${{ secrets.KUBECONFIG }}'
+#          kubeconfig: '${{ secrets.KUBECONFIG }}'
 
 
