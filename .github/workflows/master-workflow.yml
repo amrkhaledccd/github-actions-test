@@ -44,7 +44,7 @@ jobs:
         run: docker push ${{ secrets.DOCKER_USER }}/$REPO:latest
 
   deploy:
-    name: Deloy to K8s
+    name: Deploy to K8s
     runs-on: ubuntu-18.04
     needs: [docker]
 
