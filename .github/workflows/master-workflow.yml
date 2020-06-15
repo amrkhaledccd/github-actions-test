@@ -7,7 +7,7 @@ on:
 
 jobs:
   test:
-    name: Unit Tests
+    name: Run Unit Tests
     runs-on: ubuntu-18.04
 
     steps:
@@ -59,8 +59,8 @@ jobs:
           export_default_credentials: true
       - run: gcloud info
       - name: Generate kube config file
-        run: gcloud container clusters get-credentials  swapy-k8s --zone=${{ secrets.CLUSTER_ZONE }}
-      - name: setup Helm3
+        run: gcloud container clusters get-credentials  sample_cluster --zone=${{ secrets.CLUSTER_ZONE }}
+      - name: Setup Helm3
         run: |-
           curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
           chmod 700 get_helm.sh
