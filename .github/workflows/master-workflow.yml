@@ -60,6 +60,7 @@ jobs:
       - run: gcloud info
       - name: Generate kube config file
         run: gcloud container clusters get-credentials  swapy-k8s --zone=${{ secrets.CLUSTER_ZONE }}
+      - run: cat ~/.kube/config
       - name: Deploy
         uses: WyriHaximus/github-action-helm3@v1.0.0
         with:
