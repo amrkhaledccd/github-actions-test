@@ -31,7 +31,7 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
             - name: server.port
-              value: {{ .Values.env.server.port }}
+              value: "{{ .Values.env.server.port }}"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
