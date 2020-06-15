@@ -59,7 +59,7 @@ jobs:
           export_default_credentials: true
       - run: gcloud info
       - name: Generate kube config file
-        run: gcloud init --console-only
+        run: gcloud container clusters get-credentials cluster-name
       - name: Deploy
         uses: WyriHaximus/github-action-helm3@v1.0.0
         with:
