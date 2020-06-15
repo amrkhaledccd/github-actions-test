@@ -54,7 +54,7 @@ jobs:
       - name: Deploy
         uses: WyriHaximus/github-action-helm3@v1.0.0
         with:
-          exec: helm upgrade github-actions-test ./deployment/helm/ . --install --wait --atomic
+          exec: helm upgrade github-actions-test ./deployment/helm/ . --install --wait --atomic --namespace=default --set=app.name=github-actions-test --values=./deployment/helm/values.yaml
           kubeconfig: '${{ secrets.KUBECONFIG }}'
 
 
