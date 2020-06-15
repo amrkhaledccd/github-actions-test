@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout
-      - uses: actions/checkout@v1
+        uses: actions/checkout@v1
       - name: Set up JDK 13
         uses: actions/setup-java@v1
         with:
@@ -31,7 +31,7 @@ jobs:
 
     steps:
       - name: Checkout
-      - uses: actions/checkout@v1
+        uses: actions/checkout@v1
       - name: Set up JDK 13
         uses: actions/setup-java@v1
         with:
@@ -50,11 +50,11 @@ jobs:
 
     steps:
       - name: Checkout
-      - uses: actions/checkout@v1
+        uses: actions/checkout@v1
       - name: Deploy
-      - uses: WyriHaximus/github-action-helm3@v1
+        uses: WyriHaximus/github-action-helm3@v1
         with:
+          exec: helm upgrade github-actions-test ./deployment/helm/ . --install --wait --atomic
           kubeconfig: '${{ secrets.KUBECONFIG }}'
-        run: helm upgrade --install --wait --atomic github-actions-test ./deployment/helm/ .
 
 
