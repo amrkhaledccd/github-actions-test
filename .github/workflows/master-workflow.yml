@@ -60,8 +60,6 @@ jobs:
       - run: gcloud info
       - name: Generate kube config file
         run: gcloud container clusters get-credentials  swapy-k8s --zone=${{ secrets.CLUSTER_ZONE }}
-#      - name: export kubeconfig file to env variable
-#        run: export KUBE_CONFIG=$(cat ~/.kube/config)
       - name: setup Helm3
         run: |-
           curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
